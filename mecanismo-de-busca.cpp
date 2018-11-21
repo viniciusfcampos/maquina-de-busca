@@ -1,5 +1,8 @@
 #include "mecanismo-de-busca.h"
 #include <sstream>
+#include <locale>
+
+using namespace std;
 
 string MecanismoDeBusca::tokenizarPalavra(const string palavra)
 {
