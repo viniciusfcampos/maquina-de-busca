@@ -22,7 +22,7 @@ BOOST_AUTO_TEST_CASE(testa_regras_para_tokenizacao)
     BOOST_REQUIRE_EQUAL(mecanismo.TokenizarPalavra("Guarda-chuva,.!?;"), "guardachuva");
 }
 
-BOOST_AUTO_TEST_CASE(testa_se_esquisa_pesquisa_sem_ter_indexado_nenhum_nao_lanca_excecao)
+BOOST_AUTO_TEST_CASE(testa_se_pesquisa_pesquisa_sem_ter_indexado_nenhum_nao_lanca_excecao)
 {
     MecanismoDeBusca mecanismo;
     // Testa se não lança exceção se não tiver indexado nenhum arquivo
@@ -30,7 +30,7 @@ BOOST_AUTO_TEST_CASE(testa_se_esquisa_pesquisa_sem_ter_indexado_nenhum_nao_lanca
     BOOST_REQUIRE_EQUAL(resultados.size(), 0);
 }
 
-BOOST_AUTO_TEST_CASE(testa_se_esquisa_pesquisa_sem_ter_indexado_nenhum_arquivo_retorna_vazio)
+BOOST_AUTO_TEST_CASE(testa_se_pesquisa_pesquisa_sem_ter_indexado_nenhum_arquivo_retorna_vazio)
 {
     MecanismoDeBusca mecanismo;
     // Testa se retorna vazio para termos não inseridos
@@ -49,7 +49,7 @@ BOOST_AUTO_TEST_CASE(testa_se_nao_grava_quantidade_duplicada_de_arquivos)
     BOOST_REQUIRE_EQUAL(resultados.size(), 1);
 }
 
-BOOST_AUTO_TEST_CASE(testa_se_insercao_e_pesquisa_por_termos_contidos_em_mais_de_um_arquivo_ocorre_com_sucesso)
+BOOST_AUTO_TEST_CASE(testa_insercao_e_pesquisa_por_termos_contidos_em_mais_de_um_arquivo)
 {
     MecanismoDeBusca mecanismo;
     // Testa se grava mais de um arquivo corretamente

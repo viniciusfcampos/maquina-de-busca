@@ -9,12 +9,12 @@ void ExibirResultado(set<string> resultados)
 	{
 		for (string caminhoArquivo : resultados)
 		{
-			cout << " " << caminhoArquivo << endl;
+			cout << "   " << caminhoArquivo << endl;
 		}
 	}
 	else
 	{
-		cout << "Nenhum resultado foi encontrado para sua busca." << endl;
+		cout << "  Nenhum resultado foi encontrado para sua busca." << endl;
 	}
 }
 
@@ -30,7 +30,7 @@ int main()
 		"./livros/nao-existe.txt"};
 
 	MecanismoDeBusca mecanismo;
-	cout << "~ Shakespeare Search ~" << endl
+	cout << endl << "  ~ Shakespeare Search ~" << endl
 		 << endl;
 
 	// Indexa cada um dos arquivos informados anteriormente
@@ -39,13 +39,13 @@ int main()
 		// Este try foi colocado para tratar a abertura, leitura e fechamento de arquivos
 		try
 		{
-			cout << "Indexando o  arquivo: " << arquivo << "..." << endl;
+			cout << "  Indexando o  arquivo: " << arquivo << "..." << endl;
 			mecanismo.IndexarArquivo(arquivo);
 		}
 		catch (system_error &e)
 		{
 			// Caso alguma exceção tenha sido lançada no processamento do arquivo, a mensagem de erro é exibido na tela, mas o programa não é interrompido
-			cerr << e.what() << endl;
+			cerr << "  " << e.what() << endl;
 		}
 	}
 
@@ -54,7 +54,7 @@ int main()
 	{
 		string termo;
 		cout << endl
-			 << "Pesquisar: ";
+			 << "  Pesquisar: ";
 		cin >> termo;
 		ExibirResultado(mecanismo.Pesquisar(termo));
 	}
