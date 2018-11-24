@@ -8,10 +8,10 @@ using namespace std;
 
 class MecanismoDeBusca
 {
-    map<string, set<string>> indice;
-    string tokenizarPalavra(const string);
-    void inserirEntrada(const string, const string);
+    map<string, set<string>> Indice;
+    string TokenizarPalavra(const string);
+    void InserirEntrada(const string, const string);
   public:
-    void indexarArquivo(const string);
-    void pesquisar(const string);
+    void IndexarArquivo(const string);
+    set<string> Pesquisar(const string);
 };
