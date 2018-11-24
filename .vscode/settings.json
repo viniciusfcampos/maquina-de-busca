@@ -8,6 +8,9 @@
         "xtree": "cpp",
         "set": "cpp",
         "iostream": "cpp",
-        "xutility": "cpp"
+        "xutility": "cpp",
+        "iosfwd": "cpp",
+        "xiosbase": "cpp",
+        "system_error": "cpp"
     }
 }

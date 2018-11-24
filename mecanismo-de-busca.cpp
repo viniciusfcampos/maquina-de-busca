@@ -4,6 +4,36 @@
 
 using namespace std;
 
+void MecanismoDeBusca::IndexarArquivo(const string caminhoArquivo)
+{
+    ifstream arquivo;
+    arquivo.exceptions(ifstream::badbit);
+
+    try
+    {
+        arquivo.open(caminhoArquivo);
+
+        if (!arquivo)
+        {
+            throw system_error(errno, system_category(), "Nao foi possivel abrir o arquivo: " + caminhoArquivo);
+        }
+
+        while (!arquivo.eof())
+        {
+            string palavra;
+            arquivo >> palavra;
+            string token = TokenizarPalavra(palavra);
+            InserirEntrada(token, caminhoArquivo);
+        }
+
+        arquivo.close();
+    }
+    catch (system_error& e)
+    {
+        cerr << e.what() << endl;
+    }
+}
+
 string MecanismoDeBusca::TokenizarPalavra(const string palavra)
 {
     ostringstream token;
@@ -35,20 +65,6 @@ void MecanismoDeBusca::InserirEntrada(const string token, const string caminhoAr
     Indice[token].insert(caminhoArquivo);
 }
 
-void MecanismoDeBusca::IndexarArquivo(const string caminhoArquivo)
-{
-    ifstream arquivo;
-    arquivo.open(caminhoArquivo);
-
-    while (!arquivo.eof())
-    {
-        string palavra;
-        arquivo >> palavra;
-        string token = TokenizarPalavra(palavra);
-        InserirEntrada(token, caminhoArquivo);
-    }
-}
-
 set<string> MecanismoDeBusca::Pesquisar(const string termo)
 {
     string token = TokenizarPalavra(termo);
@@ -58,6 +74,6 @@ set<string> MecanismoDeBusca::Pesquisar(const string termo)
     {
         resultadoBusca = Indice[token];
     }
-    
+
     return resultadoBusca;
 }

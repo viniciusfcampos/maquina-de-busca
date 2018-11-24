@@ -24,7 +24,8 @@ int main()
 		"./livros/kinglear.txt",
 		"./livros/romeoandjuliet.txt",
 		"./livros/hamlet.txt",
-		"./livros/macbeth.txt"};
+		"./livros/macbeth.txt",
+		"./livros/nao-existe.txt"};
 
 	MecanismoDeBusca mecanismo;
 	cout << "~ Shakespeare Search ~" << endl
