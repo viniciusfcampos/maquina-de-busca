@@ -4,6 +4,7 @@ using namespace std;
 
 void ExibirResultado(set<string> resultados)
 {
+	// Verifica se algum resultado foi encontrado antes de imprimir
 	if (resultados.size() > 0)
 	{
 		for (string caminhoArquivo : resultados)
@@ -19,6 +20,7 @@ void ExibirResultado(set<string> resultados)
 
 int main()
 {
+	// Lista de livros a serem indexados. Um deles nao-existe e foi colocado nesta lista para testar o tratamento de exceções
 	string arquivos[] = {
 		"./livros/othello.txt",
 		"./livros/kinglear.txt",
@@ -31,16 +33,28 @@ int main()
 	cout << "~ Shakespeare Search ~" << endl
 		 << endl;
 
+	// Indexa cada um dos arquivos informados anteriormente
 	for (string arquivo : arquivos)
 	{
-		cout << "Indexando o  arquivo: " << arquivo << "..." << endl;
-		mecanismo.IndexarArquivo(arquivo);
+		// Este try foi colocado para tratar a abertura, leitura e fechamento de arquivos
+		try
+		{
+			cout << "Indexando o  arquivo: " << arquivo << "..." << endl;
+			mecanismo.IndexarArquivo(arquivo);
+		}
+		catch (system_error &e)
+		{
+			// Caso alguma exceção tenha sido lançada no processamento do arquivo, a mensagem de erro é exibido na tela, mas o programa não é interrompido
+			cerr << e.what() << endl;
+		}
 	}
 
+	// Após indexar, a máquina de busca fica disponível para consultas.
 	while (1)
 	{
 		string termo;
-		cout << endl << "Pesquisar: ";
+		cout << endl
+			 << "Pesquisar: ";
 		cin >> termo;
 		ExibirResultado(mecanismo.Pesquisar(termo));
 	}

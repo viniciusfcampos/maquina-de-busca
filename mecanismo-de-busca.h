@@ -9,9 +9,9 @@ using namespace std;
 class MecanismoDeBusca
 {
     map<string, set<string>> Indice;
-    string TokenizarPalavra(const string);
-    void InserirEntrada(const string, const string);
   public:
+    string TokenizarPalavra(const string);
     void IndexarArquivo(const string);
+    void InserirEntrada(const string, const string);
     set<string> Pesquisar(const string);
 };
